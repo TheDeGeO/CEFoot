@@ -4,7 +4,7 @@ import socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Especificar la dirección IP y el puerto del host
-server_address = ('192.168.123.100', 12345)
+server_address = ('192.168.100.99', 12345)
 
 # Conectar al host
 client_socket.connect(server_address)
