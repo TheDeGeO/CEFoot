@@ -255,7 +255,7 @@ while run:
         dev1_id = text_block("2024157494", 30, (window_width/2 + 100, 200))
         screen.blit(dev1_id[0], dev1_id[1])
 
-        dev2_id = text_block("2024xxxxxx", 30, (window_width/2 + 100, 230))
+        dev2_id = text_block("2024174079", 30, (window_width/2 + 100, 230))
         screen.blit(dev2_id[0], dev2_id[1])
 
         #Add academic info
