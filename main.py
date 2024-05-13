@@ -33,27 +33,21 @@ ledPaleta6 = machine.Pin(6, machine.Pin.OUT)
 # Connect to WiFi
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
-wlan.connect('Melubla', 'Mb1604XN2')
+wlan.connect('Vega', '123456789')
 
 while wlan.isconnected() == False:
     pass
 
 print('Connected to WiFi network')
 
-#Create wifi hostpot for client to connect
-"""ssid = 'MicroPython-AP'
-password = '123456789'
+# Get the IP address
+ip_address = wlan.ifconfig()[0]
 
-ap = network.WLAN(network.AP_IF)
-ap.config(essid=ssid, password=password)
-ap.active(True)"""
-
-# Set the IP address for the hotspot
-#wlan.ifconfig(('192.168.1.55', '255.255.255.0', '192.168.1.1', '8.8.8.8'))
+print(f"Device IP address: {ip_address}")
 
 
 #Create socket
-server_address = ('192.168.100.99', 12345)
+server_address = (ip_address, 12345)
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind(server_address)
@@ -64,8 +58,6 @@ print(f"Host esperando conexiones en {server_address[0]}:{server_address[1]}")
 
 
 while True:
-    #print(paleta1.value(), paleta2.value(), paleta3.value(), paleta4.value(), paleta5.value(), paleta6.value())
-    #print(botonJugador.value())
 
     client_socket, client_address = server_socket.accept()
     print(f"Conexión establecida con {client_address[0]}:{client_address[1]}")
@@ -90,7 +82,6 @@ while True:
     client_socket.sendall(message.encode())
 
     client_socket.close()
-
 
 
 
